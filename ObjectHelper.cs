@@ -44,12 +44,35 @@ namespace SIP_Civil3D_Tools
             return TypeDescriptor.GetProperties(GetAcadObject(tr, objectId));
         }
 
-        public static void CopyObjects(Transaction tr, ObjectIdCollection objectIds)
+        public static void CopyObjects(Transaction tr, ObjectIdCollection objectIds, string newLayer = null)
         {
 
             var idMap = new IdMapping();
             var db = Active.Database;
             db.DeepCloneObjects(objectIds, db.CurrentSpaceId, idMap, false);
+
+            if (newLayer != "")
+            {
+                foreach (IdPair pair in idMap)
+                {
+                    if (pair.IsCloned)
+                    {
+                        var cloned = tr.GetObject(
+                            pair.Value, OpenMode.ForRead) as Entity;
+                        if (cloned != null)
+                        {
+                            cloned.UpgradeOpen();
+
+                            if (LayerHelper.LayerExists(tr, newLayer) == false)
+                            {
+                                LayerHelper.CreateLayer(tr, newLayer);
+                            }
+
+                            cloned.Layer = newLayer;
+                        }
+                    }
+                }
+            }
             
 
             

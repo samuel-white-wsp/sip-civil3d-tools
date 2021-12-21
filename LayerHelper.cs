@@ -19,20 +19,37 @@ namespace SIP_Civil3D_Tools
         {
             return tr.GetObject(Active.Database.LayerTableId, openMode) as LayerTable;
         }
+
+        public static string CurrentLayerName(Transaction tr)
+        {
+            LayerTableRecord ltr = (LayerTableRecord)tr.GetObject(Active.Database.Clayer, OpenMode.ForRead);
+            return ltr.Name;
+        }
+
+        public static bool LayerExists(Transaction tr, string layerName)
+        {
+            var layerTable = GetLayerTable(tr);
+            return layerTable.Has(layerName);
+        }
+
         public static void CreateLayer(Transaction tr, string layerName)
         {
             var layerTable = GetLayerTable(tr);
 
-            if (layerTable.Has(layerName) == false)
+            if (layerTable.Has(layerName))
+            {
+                Active.Write(String.Format("Layer {0} already exists", layerName));
+            }
+            else
             {
                 LayerTableRecord layerTableRecord = new LayerTableRecord();
                 layerTableRecord.Color = Color.FromColorIndex(ColorMethod.ByAci, 1);
                 layerTableRecord.Name = layerName;
                 //Upgrade the layer table for write
-                layerTableRecord.UpgradeOpen();
+                layerTable.UpgradeOpen();
                 layerTable.Add(layerTableRecord);
+                Active.Write(String.Format("Layer {0} created", layerName));
                 tr.AddNewlyCreatedDBObject(layerTableRecord, true);
-
             }
         }
     }

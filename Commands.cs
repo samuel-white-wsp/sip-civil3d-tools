@@ -34,10 +34,10 @@ namespace SIP_Civil3D_Tools
             //BlockTools bt = new BlockTools();
             //bt.InsertingABlock();
         }
-        
+
         [CommandMethod("PrintProperties")]
         public void PrintProperties()
-         {
+        {
 
             PromptSelectionResult selection = Active.Editor.GetSelection();
 
@@ -55,18 +55,36 @@ namespace SIP_Civil3D_Tools
             }
 
         }
-        
-        [CommandMethod("CopyObjects")]
-        public void CopyObjects()
+
+        //TODO Command for cleaning layer using Overkill
+
+        [CommandMethod("CopyToLayer")]
+        public void CopyToLayer()
         {
             PromptSelectionResult selection = Active.Editor.GetSelection();
-            if (selection.Status != PromptStatus.OK)
-                return;
+            PromptStringOptions pStrOpts = new PromptStringOptions("\nEnter layer to copy to: ");
 
             Active.UsingTransaction(tr =>
             {
+                pStrOpts.AllowSpaces = false;
+            
+                pStrOpts.DefaultValue = LayerHelper.CurrentLayerName(tr);
+
+                PromptResult pStrRes = Active.Editor.GetString(pStrOpts);
+
+                string newLayer = "";
+            
+                if (pStrRes.Status == PromptStatus.OK)
+                {
+                    newLayer = pStrRes.StringResult;
+                }
+          
+                if (selection.Status != PromptStatus.OK)
+                    return;
+
+            
                 var ids = new ObjectIdCollection(selection.Value.GetObjectIds());
-                ObjectHelper.CopyObjects(tr, ids);
+                ObjectHelper.CopyObjects(tr, ids, newLayer);
 
             });
 
@@ -79,5 +97,15 @@ namespace SIP_Civil3D_Tools
             ed.Command("QSELECT");
         }
 
+        [CommandMethod("CreateLayer")]
+        public void CreateLayer()
+        {
+            Active.UsingTransaction(tr =>
+            {
+                LayerHelper.CreateLayer(tr, "test_layer");
+
+            });
+
+        }
     }
 }
