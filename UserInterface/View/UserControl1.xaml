@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="SIP_Civil3D_Tools.UserInterface.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIP_Civil3D_Tools.UserInterface"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Label Content="Radius" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="label1" VerticalAlignment="Top" />
+        <Slider Height="23" HorizontalAlignment="Stretch" Margin="12,46,12,0" Name="slider1" VerticalAlignment="Top" 
+				IsEnabled="{Binding IsEnabled}" Minimum="{Binding MinRadius}" Maximum="{Binding MaxRadius}" Value="{Binding Radius, Mode=TwoWay}" />
+        <Label Content="Layers" Height="28" HorizontalAlignment="Left" Margin="12,92,0,0" Name="labe2sip1" VerticalAlignment="Top" />
+        <ListBox HorizontalAlignment="Left" Height="85" Margin="12,125,0,0" VerticalAlignment="Top" Width="276"/>
+        <Label Content="{Binding testString}" Height="28" HorizontalAlignment="Left" Margin="12,220,0,0" Name="labe2sip12" VerticalAlignment="Top" />
+
+
+    </Grid>
+</UserControl>
+

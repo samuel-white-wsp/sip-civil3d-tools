@@ -11,6 +11,8 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using System.ComponentModel;
 
+using SIP_Civil3D_Tools.UserInterface.AcadHost;
+
 namespace SIP_Civil3D_Tools
 {
     public class Commands
@@ -106,6 +108,13 @@ namespace SIP_Civil3D_Tools
 
             });
 
+        }
+
+        [CommandMethod("SIPTools")]
+        public void SipTools()
+        {
+            MainApp mainApp = new MainApp();
+            mainApp.Initialize();
         }
     }
 }
