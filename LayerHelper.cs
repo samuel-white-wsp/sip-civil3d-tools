@@ -52,5 +52,18 @@ namespace SIP_Civil3D_Tools
                 tr.AddNewlyCreatedDBObject(layerTableRecord, true);
             }
         }
+
+        public static List<String> getLayerList(Transaction tr)
+        {
+            List<String> layerNameList = new List<String>();
+            LayerTable lt = GetLayerTable(tr);
+            foreach (ObjectId objectId in lt)
+            {
+                LayerTableRecord layerTableRecord;
+                layerTableRecord = tr.GetObject(objectId, OpenMode.ForRead) as LayerTableRecord;
+                layerNameList.Add(layerTableRecord.Name);
+            }
+            return layerNameList;
+        }
     }
 }
