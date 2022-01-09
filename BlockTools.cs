@@ -25,26 +25,33 @@ namespace SIP_Civil3D_Tools
 
                 ObjectId blkRecId = ObjectId.Null;
 
-                if (acBlkTbl.Has(blockName))
+                if (!acBlkTbl.Has(blockName))
                 {
-                    blkRecId = acBlkTbl[blockName];
-
-                    // Insert the block into the current space
-                    if (blkRecId != ObjectId.Null)
+                    try
                     {
-                        using (BlockReference acBlkRef = new BlockReference(position, blkRecId))
+                        // search for a dwg file named 'blockName' in AutoCAD search paths
+                        var filename = HostApplicationServices.Current.FindFile(blockName + ".dwg", db, FindFileHint.Default);
+                        // add the dwg model space as 'blockName' block definition in the current database block table
+                        using (var sourceDb = new Database(false, true))
                         {
-                            BlockTableRecord acCurSpaceBlkTblRec;
-                            acCurSpaceBlkTblRec = tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite) as BlockTableRecord;
-
-                            acCurSpaceBlkTblRec.AppendEntity(acBlkRef);
-                            tr.AddNewlyCreatedDBObject(acBlkRef, true);
+                            sourceDb.ReadDwgFile(filename, FileOpenMode.OpenForReadAndAllShare, true, "");
+                            db.Insert(blockName, sourceDb, true);
                         }
                     }
+                    catch
+                    {
+                        Active.Editor.WriteMessage($"\nBlock '{blockName}' not found.");
+                        return;
+                    }
                 }
-                else
+
+
+                // create a new block reference
+                using (var br = new BlockReference(position, acBlkTbl[blockName]))
                 {
-                    Active.Editor.WriteMessage("\nNo block found");
+                    var space = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
+                    space.AppendEntity(br);
+                    tr.AddNewlyCreatedDBObject(br, true);
                 }
             }
             );
