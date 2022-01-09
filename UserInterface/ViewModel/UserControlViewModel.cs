@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace SIP_Civil3D_Tools.UserInterface.ViewModel
 		private double _radius;
 		private double _minRadius;
 		private double _maxRadius;
+		ObservableCollection<string> _layerNameCollection;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UserControlViewModel"/> class.
@@ -125,6 +127,19 @@ namespace SIP_Civil3D_Tools.UserInterface.ViewModel
 		/// <value>
 		/// The radius of the selected circle.
 		/// </value>
+		public ObservableCollection<string> LayerNameCollection
+        {
+			get
+            {
+				List<string> layerNames = LayerHelper.GetLayerList();
+				_layerNameCollection = new ObservableCollection<string>(layerNames);
+
+				return _layerNameCollection;
+
+			}
+        }
+
+
 		public double Radius
 		{
 			get { return _radius; }
