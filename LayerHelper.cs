@@ -53,16 +53,21 @@ namespace SIP_Civil3D_Tools
             }
         }
 
-        public static List<String> getLayerList(Transaction tr)
+        public static List<String> GetLayerList()
         {
             List<String> layerNameList = new List<String>();
-            LayerTable lt = GetLayerTable(tr);
-            foreach (ObjectId objectId in lt)
+            Active.UsingTransaction(tr =>
             {
-                LayerTableRecord layerTableRecord;
-                layerTableRecord = tr.GetObject(objectId, OpenMode.ForRead) as LayerTableRecord;
-                layerNameList.Add(layerTableRecord.Name);
-            }
+                
+                LayerTable lt = GetLayerTable(tr);
+                foreach (ObjectId objectId in lt)
+                {
+                    LayerTableRecord layerTableRecord;
+                    layerTableRecord = tr.GetObject(objectId, OpenMode.ForRead) as LayerTableRecord;
+                    layerNameList.Add(layerTableRecord.Name);
+                }
+                
+            });
             return layerNameList;
         }
     }

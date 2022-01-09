@@ -11,7 +11,7 @@
         <Slider Height="23" HorizontalAlignment="Stretch" Margin="12,46,12,0" Name="slider1" VerticalAlignment="Top" 
 				IsEnabled="{Binding IsEnabled}" Minimum="{Binding MinRadius}" Maximum="{Binding MaxRadius}" Value="{Binding Radius, Mode=TwoWay}" />
         <Label Content="Layers" Height="28" HorizontalAlignment="Left" Margin="12,92,0,0" Name="labe2sip1" VerticalAlignment="Top" />
-        <ListBox HorizontalAlignment="Left" Height="85" Margin="12,125,0,0" VerticalAlignment="Top" Width="276"/>
+        <ListBox ItemsSource="{Binding LayerNameCollection}" HorizontalAlignment="Left" Height="85" Margin="12,125,0,0" VerticalAlignment="Top" Width="240"/>
         <Label Content="{Binding testString}" Height="28" HorizontalAlignment="Left" Margin="12,220,0,0" Name="labe2sip12" VerticalAlignment="Top" />
 
 
