@@ -5,14 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIP_Civil3D_Tools.UserInterface"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Label Content="Radius" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="label1" VerticalAlignment="Top" />
-        <Slider Height="23" HorizontalAlignment="Stretch" Margin="12,46,12,0" Name="slider1" VerticalAlignment="Top" 
+             d:DesignHeight="894" d:DesignWidth="318">
+    <Grid Margin="0,0,0,-285">
+        <Label Content="Radius" Height="28" HorizontalAlignment="Left" Margin="14,57,0,0" Name="label1" VerticalAlignment="Top" RenderTransformOrigin="0.578,-0.679" />
+        <Slider Height="23" HorizontalAlignment="Stretch" Margin="14,90,10,0" Name="slider1" VerticalAlignment="Top" 
 				IsEnabled="{Binding IsEnabled}" Minimum="{Binding MinRadius}" Maximum="{Binding MaxRadius}" Value="{Binding Radius, Mode=TwoWay}" />
-        <Label Content="Layers" Height="28" HorizontalAlignment="Left" Margin="12,92,0,0" Name="labe2sip1" VerticalAlignment="Top" />
-        <ListBox ItemsSource="{Binding LayerNameCollection}" HorizontalAlignment="Left" Height="85" Margin="12,125,0,0" VerticalAlignment="Top" Width="240"/>
+        <Label Content="Layers" Height="28" HorizontalAlignment="Left" Margin="10,137,0,0" Name="labe2sip1" VerticalAlignment="Top" />
+        <ListBox ItemsSource="{Binding LayerNameCollection}" HorizontalAlignment="Left" Height="246" Margin="10,170,0,0" VerticalAlignment="Top" Width="240"/>
         <Label Content="{Binding testString}" Height="28" HorizontalAlignment="Left" Margin="12,220,0,0" Name="labe2sip12" VerticalAlignment="Top" />
+        <Label Content="SIP Toolkit" Height="28" HorizontalAlignment="Left" Margin="14,10,0,0" x:Name="label1_Copy" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" />
+        <Separator HorizontalAlignment="Left" Height="24" Margin="14,38,0,0" VerticalAlignment="Top" Width="294"/>
+        <Separator HorizontalAlignment="Left" Height="24" Margin="14,113,0,0" VerticalAlignment="Top" Width="294"/>
 
 
     </Grid>
