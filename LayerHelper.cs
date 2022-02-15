@@ -70,5 +70,20 @@ namespace SIP_Civil3D_Tools
             });
             return layerNameList;
         }
+
+        public static string GetObjectLayerName(ObjectId objectId)
+        {
+            string layer = "";
+
+              Active.UsingTransaction(tr =>
+            {
+                Entity ent = ObjectHelper.GetEntity(tr, objectId);
+                //Entity ent = (Entity)objectId.GetObject(OpenMode.ForRead);
+                layer = ent.Layer;
+
+            });
+            return layer;
+
+        }
     }
 }

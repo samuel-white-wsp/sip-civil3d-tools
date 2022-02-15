@@ -44,36 +44,48 @@ namespace SIP_Civil3D_Tools
             return TypeDescriptor.GetProperties(GetAcadObject(tr, objectId));
         }
 
-        public static void CopyObjects(Transaction tr, ObjectIdCollection objectIds, string newLayer = null)
+        public static ObjectIdCollection CopyObjects(Transaction tr, ObjectIdCollection objectIds, string copyLayer = "")
         {
 
             var idMap = new IdMapping();
             var db = Active.Database;
+
             db.DeepCloneObjects(objectIds, db.CurrentSpaceId, idMap, false);
 
-            if (newLayer != "")
-            {
-                foreach (IdPair pair in idMap)
-                {
-                    if (pair.IsCloned)
-                    {
-                        var cloned = tr.GetObject(
-                            pair.Value, OpenMode.ForRead) as Entity;
-                        if (cloned != null)
-                        {
-                            cloned.UpgradeOpen();
+            ObjectIdCollection objectIdCollection = new ObjectIdCollection();
 
-                            if (LayerHelper.LayerExists(tr, newLayer) == false)
+
+            foreach (IdPair pair in idMap)
+            {
+                if (pair.IsCloned)
+                {
+                    var cloned = tr.GetObject(
+                        pair.Value, OpenMode.ForRead) as Entity;
+                    
+                   
+                    if (cloned != null)
+                    {
+                        cloned.UpgradeOpen();
+
+                        
+                        if (copyLayer != "")
+                        {
+                            if (LayerHelper.LayerExists(tr, copyLayer) == false)
                             {
-                                LayerHelper.CreateLayer(tr, newLayer);
+                                LayerHelper.CreateLayer(tr, copyLayer);
                             }
 
-                            cloned.Layer = newLayer;
+                            cloned.Layer = copyLayer;
                         }
+
+                        objectIdCollection.Add(cloned.ObjectId);
                     }
                 }
             }
-            
+
+
+            return objectIdCollection;
+          
 
             
             //Entity ent = GetEntity(tr, objectId);
@@ -81,7 +93,15 @@ namespace SIP_Civil3D_Tools
             //return newObjectId;
         }
 
-        public static void PrintProperties(Transaction tr, ObjectId objectId)
+        public static ObjectId CopyObjects(Transaction tr, ObjectId objectId, string newLayer = "")
+        {
+            ObjectIdCollection objectIdCollection = new ObjectIdCollection();
+            objectIdCollection.Add(objectId);
+            return CopyObjects(tr, objectIdCollection, newLayer)[0];
+
+        }
+
+            public static void PrintProperties(Transaction tr, ObjectId objectId)
         {
             object acadObj = GetAcadObject(tr, objectId);
             var props = ObjectHelper.GetObjectProperties(acadObj);

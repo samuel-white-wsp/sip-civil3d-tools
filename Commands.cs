@@ -10,6 +10,12 @@ using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using System.ComponentModel;
+using Autodesk.AutoCAD.Geometry;
+
+using Autodesk.Civil.Runtime;
+using Autodesk.Civil.DatabaseServices;
+using Autodesk.Civil.ApplicationServices;
+using Autodesk.Civil;
 
 using SIP_Civil3D_Tools.UserInterface.AcadHost;
 
@@ -86,7 +92,7 @@ namespace SIP_Civil3D_Tools
 
             
                 var ids = new ObjectIdCollection(selection.Value.GetObjectIds());
-                ObjectHelper.CopyObjects(tr, ids, newLayer);
+                ObjectIdCollection objectId = ObjectHelper.CopyObjects(tr, ids, newLayer);
 
             });
 
@@ -116,5 +122,52 @@ namespace SIP_Civil3D_Tools
             MainApp mainApp = new MainApp();
             mainApp.Initialize();
         }
+
+        [CommandMethod("FindNearestParallel")]
+        public void FindNearestParallel()
+        {
+            GeometryTools.NearestParallelLine();
+        }
+
+        [CommandMethod("InsertOffsetBlock")]
+        public void InsertOffsetBlock()
+        {
+            var ed = Active.Editor;
+
+            var doc = Active.Document;
+
+            using (doc.LockDocument())
+            {
+                Active.UsingTransaction(tr =>
+                {
+
+                    PromptEntityOptions entOpts = new PromptEntityOptions("Select an alignment");
+                    entOpts.SetRejectMessage("..Not an alignment, try again!");
+                    entOpts.AddAllowedClass(typeof(Alignment), true);
+                    PromptEntityResult res = ed.GetEntity(entOpts);
+
+                    if (res.Status != PromptStatus.OK)
+                    {
+                        return;
+                    }
+
+                    Alignment alignment = (Alignment)res.ObjectId.GetObject(OpenMode.ForRead);
+                    double offset = 2000;
+                    double chaingage = alignment.Length / 2;
+
+                    Point3d location = GeometryTools.GetOffsetPoint(tr, alignment, chaingage, offset);
+                    BlockTools.InsertCircleBlock(tr, location, 2000);
+                });
+            }
+           
+        }
+
+        [CommandMethod("SIPBarrier")]
+        public void Barrier()
+        {
+            BarrierTools.BarrierTest();
+        }
+
+
     }
 }
