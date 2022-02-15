@@ -162,12 +162,5 @@ namespace SIP_Civil3D_Tools
            
         }
 
-        [CommandMethod("SIPBarrier")]
-        public void Barrier()
-        {
-            BarrierTools.BarrierTest();
-        }
-
-
     }
 }

@@ -43,12 +43,20 @@
       <HintPath>..\..\..\Program Files\Autodesk\AutoCAD 2020\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="AcTcMgd">
+      <HintPath>..\..\..\Program Files\Autodesk\AutoCAD 2020\AcTcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="AecBaseMgd">
       <HintPath>..\..\..\Program Files\Autodesk\AutoCAD 2020\AecBaseMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AeccDbMgd">
       <HintPath>..\..\..\Program Files\Autodesk\AutoCAD 2020\C3D\AeccDbMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Autodesk.Consulting.Civil3D.Barriers.2021">
+      <HintPath>..\..\..\ProgramData\Autodesk\C3D 2021\enu\Data\ToolBox\ANZ\Autodesk.Consulting.Civil3D.Barriers.2021.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -68,11 +76,13 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarrierTools.cs" />
     <Compile Include="Common\Active.cs" />
     <Compile Include="BlockTools.cs" />
     <Compile Include="Commands.cs" />
     <Compile Include="Common\ExtensionMethods.cs" />
     <Compile Include="Common\LinqExtensions.cs" />
+    <Compile Include="GeometryTools.cs" />
     <Compile Include="LayerHelper.cs" />
     <Compile Include="ObjectHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,11 +93,18 @@
     <Compile Include="UserInterface\ViewModel\ICircleEntity.cs" />
     <Compile Include="UserInterface\ViewModel\IHostApplication.cs" />
     <Compile Include="UserInterface\ViewModel\UserControlViewModel.cs" />
+    <Compile Include="UserInterface\View\BarrierTool.xaml.cs">
+      <DependentUpon>BarrierTool.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface\View\UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="UserInterface\View\BarrierTool.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserInterface\View\UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
