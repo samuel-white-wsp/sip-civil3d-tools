@@ -18,7 +18,7 @@ namespace SIP_Civil3D_Tools
 
         public static Entity GetEntity(Transaction tr, ObjectId objectId, OpenMode openMode = OpenMode.ForRead)
         {
-            return (Entity)tr.GetObject(objectId, OpenMode.ForRead);
+            return (Entity)tr.GetObject(objectId, OpenMode.ForRead)
         }
 
         public static object GetAcadObject(Transaction tr, Entity ent)

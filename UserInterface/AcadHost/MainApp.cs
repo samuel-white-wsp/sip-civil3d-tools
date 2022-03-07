@@ -8,6 +8,7 @@ using System.Windows.Forms.Integration;
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.Windows;
 using SIP_Civil3D_Tools.Common;
+using SIP_Civil3D_Tools.UserInterface.View;
 
 namespace SIP_Civil3D_Tools.UserInterface.AcadHost
 {
@@ -20,12 +21,14 @@ namespace SIP_Civil3D_Tools.UserInterface.AcadHost
 			if (_paletteSet == null)
 			{
 				var ctrl = new UserControl1();
+				var barr = new BarrierTool();
 
 				_paletteSet = new PaletteSet("WPF Demo")
 								  {
 									  {
 										  "Circle Radius",
-										  new ElementHost {AutoSize = true, Dock = DockStyle.Fill, Child = ctrl}
+										  //new ElementHost {AutoSize = true, Dock = DockStyle.Fill, Child = ctrl}
+										  new ElementHost {AutoSize = true, Dock = DockStyle.Fill, Child = barr}
 									  }
 								  };
 

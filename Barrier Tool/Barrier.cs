@@ -19,23 +19,12 @@ using Autodesk.Civil;
 
 namespace SIP_Civil3D_Tools
 {
-    static class BarrierTools
-    {
-        //public static void BarrierTest()
-        //{
-        //    Autodesk.Consulting.Civil3D.Barriers.Commands.barrierWindow = new Autodesk.Consulting.Civil3D.Barriers.Barriers();
-        //    Autodesk.Consulting.Civil3D.Barriers.Commands.barrierWindow.ShowDialog();
-
-
-        //}
-
-
-    }
-
-    class Barrier
+    public class Barrier : INotifyPropertyChanged
     {
         public string id;
         public Alignment alignment;
+        FeatureLine fl;
+        
 
         private double _startChainage;
         public double startChainage
@@ -53,6 +42,7 @@ namespace SIP_Civil3D_Tools
                 if (alignment != null)
                 {
                     _endChainage = Math.Min(alignment.Length, value);
+
                 }
                 else
                 {
@@ -67,6 +57,16 @@ namespace SIP_Civil3D_Tools
         public double postSpacing;
         public string layer;
         public DBObjectCollection _dbObjectCollection;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
     }
 }

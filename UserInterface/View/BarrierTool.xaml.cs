@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIP_Civil3D_Tools.UserInterface.ViewModel;
+
 
 namespace SIP_Civil3D_Tools.UserInterface.View
 {
@@ -23,6 +25,7 @@ namespace SIP_Civil3D_Tools.UserInterface.View
         public BarrierTool()
         {
             InitializeComponent();
+            DataContext = new BarrierViewModel();
         }
     }
 }

@@ -76,7 +76,9 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarrierTools.cs" />
+    <Compile Include="Barrier Tool\Barrier.cs" />
+    <Compile Include="Barrier Tool\BarrierManager.cs" />
+    <Compile Include="Barrier Tool\DataReader.cs" />
     <Compile Include="Common\Active.cs" />
     <Compile Include="BlockTools.cs" />
     <Compile Include="Commands.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="UserInterface\AcadHost\CircleEntity.cs" />
     <Compile Include="UserInterface\AcadHost\HostApplication.cs" />
     <Compile Include="UserInterface\AcadHost\MainApp.cs" />
+    <Compile Include="UserInterface\ViewModel\BarrierViewModel.cs" />
     <Compile Include="UserInterface\ViewModel\CircleSelectedEventArgs.cs" />
     <Compile Include="UserInterface\ViewModel\ICircleEntity.cs" />
     <Compile Include="UserInterface\ViewModel\IHostApplication.cs" />

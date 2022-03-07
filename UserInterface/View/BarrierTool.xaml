@@ -4,15 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIP_Civil3D_Tools.UserInterface.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Height="734.354" Width="303.448">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Height="34" Margin="10,10,0,0" TextWrapping="Wrap" Text="Barrier Tool" VerticalAlignment="Top" Width="133"/>
-        <DataGrid x:Name="FeatureLines" HorizontalAlignment="Left" Height="287" Margin="22,58,0,0" VerticalAlignment="Top" Width="710">
-            <DataGrid.Columns>
-                <DataGridTextColumn 
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListBox ItemsSource="{Binding layerNamesCollection}" HorizontalAlignment="Left" Height="144" Margin="38,145,0,0" VerticalAlignment="Top" Width="255"/>
+        <Button Command="{Binding Path=UpdateCommand}" Content="Update" HorizontalAlignment="Left" Height="48" Margin="65,62,0,0" VerticalAlignment="Top" Width="149"/>
+        <DataGrid ItemsSource="{Binding Source=alignmentsCollection}" HorizontalAlignment="Left" Height="287" Margin="25,332,0,0" VerticalAlignment="Top" Width="268"/>
+
 
     </Grid>
 </UserControl>
