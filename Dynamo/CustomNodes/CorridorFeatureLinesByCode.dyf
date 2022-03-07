@@ -1,0 +1,478 @@
+{
+  "Uuid": "1c45fbe6-6ad1-4adc-8d8f-35e6c71c5bd8",
+  "IsCustomNode": true,
+  "Category": "SIP_Tools",
+  "Description": "Returns all corridor feature lines for a given code",
+  "Name": "CorridorFeatureLinesByCode",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Document.Current": {
+        "Key": "Autodesk.AutoCAD.DynamoNodes.Document",
+        "Value": "AutoCADNodes.dll"
+      },
+      "Document": {
+        "Key": "Autodesk.AutoCAD.DynamoNodes.Document",
+        "Value": "AutoCADNodes.dll"
+      },
+      "CorridorFeatureLine": {
+        "Key": "Autodesk.Civil.DynamoNodes.CorridorFeatureLine",
+        "Value": "Civil3DNodes.dll"
+      },
+      "CoordinateSystem": {
+        "Key": "Autodesk.DesignScript.Geometry.CoordinateSystem",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Vector": {
+        "Key": "Autodesk.DesignScript.Geometry.Vector",
+        "Value": "ProtoGeometry.dll"
+      },
+      "BlockReference": {
+        "Key": "Autodesk.AutoCAD.DynamoNodes.BlockReference",
+        "Value": "AutoCADNodes.dll"
+      },
+      "Corridor": {
+        "Key": "Autodesk.Civil.DynamoNodes.Corridor",
+        "Value": "Civil3DNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Corridor.Baselines",
+      "Id": "1844dbd16d314bbeb7f9dc0af12c51dc",
+      "Inputs": [
+        {
+          "Id": "8a2d16b45f19449da1c23d9ee911b88f",
+          "Name": "corridor",
+          "Description": "Autodesk.Civil.DynamoNodes.Corridor",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "454df0499a7343a894ece5676aaf88db",
+          "Name": "Baseline[]",
+          "Description": "Baseline[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all baselines from the corridor.\n\nCorridor.Baselines: Baseline[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Baseline.Codes",
+      "Id": "19575384d21d44d99e1414cbe2178123",
+      "Inputs": [
+        {
+          "Id": "c901bcb935964e40afbf53a460a72adf",
+          "Name": "baseline",
+          "Description": "Autodesk.Civil.DynamoNodes.Baseline",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1c05f0b77af04476bbcd10c251919a73",
+          "Name": "Point Codes",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "15d2c1afb2e6409d8b4a6a8e7a340649",
+          "Name": "Link Codes",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f81dcab806f3459aba950a439bd3492f",
+          "Name": "Shape Codes",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the codes of the baseline.\n\nBaseline.Codes ( ): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Contains@var[]..[],var[]..[]",
+      "Id": "55c1002b0d3e4636a109a8c8241486b3",
+      "Inputs": [
+        {
+          "Id": "d1d32833d1a24929b647ac217c1d4588",
+          "Name": "list",
+          "Description": "List to search in.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8f05e7ac69924c25ad1b788beda7d17d",
+          "Name": "item",
+          "Description": "Item to look for.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a8e4ebbb52c849d18b525f8bbadd9cae",
+          "Name": "bool",
+          "Description": "Whether list contains the given item.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Determines if the given list contains the given item. This function searches through the sublists contained in it.\n\nList.Contains (list: var[]..[], item: var[]..[]): bool"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "cfe5d8f6e89c4ba79fe9a23adf1fb7f7",
+      "Inputs": [
+        {
+          "Id": "575bf80e2afc4ca58dc33b7382ff2adb",
+          "Name": "list",
+          "Description": "List to filter.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b64152ef28c84e67844b11aceb05ab6f",
+          "Name": "mask",
+          "Description": "List of booleans representing a mask.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c53c6276f1bf491a883903edab29e5ec",
+          "Name": "in",
+          "Description": "Items whose mask index is true.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "85871e936c174fac895903568ab1ab6d",
+          "Name": "out",
+          "Description": "Items whose mask index is false.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Filters a sequence by looking up corresponding indices in a separate list of booleans.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Baseline.CorridorFeatureLinesByCode@string",
+      "Id": "80dab3550257448e9b918e6740659c70",
+      "Inputs": [
+        {
+          "Id": "bdfbdce72ba24b89bc5bf9743528a988",
+          "Name": "baseline",
+          "Description": "Autodesk.Civil.DynamoNodes.Baseline",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c63f356527f94becb825830d66ee851b",
+          "Name": "code",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d9279033fd5145519b531a61d46aef55",
+          "Name": "CorridorFeatureLine[]",
+          "Description": "CorridorFeatureLine[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the corridor feature lines of the baseline by a specified code name.\n\nBaseline.CorridorFeatureLinesByCode (code: string): CorridorFeatureLine[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "corridor",
+        "TypeName": "Autodesk.Civil.DynamoNodes.Corridor",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "ede3147ffe774d9aa518da6f902c88d9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "296eafb98d2d41398312811f16b0f5f7",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "code",
+        "TypeName": "var",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "eb371b255da446648c5723cdfa0f55e1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "74e3771976c1410494c48cb9744f371a",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "CorridorFeatureLine[]",
+      "Id": "baf2411d4055442aa3835bc7054c8c20",
+      "Inputs": [
+        {
+          "Id": "d60c0f6e21b348118fae4d8335b7e976",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "454df0499a7343a894ece5676aaf88db",
+      "End": "c901bcb935964e40afbf53a460a72adf",
+      "Id": "277a6c54c0034d7fb2ff75c20b376f45"
+    },
+    {
+      "Start": "454df0499a7343a894ece5676aaf88db",
+      "End": "575bf80e2afc4ca58dc33b7382ff2adb",
+      "Id": "213d1832795e428ab5ca26e2cfe23878"
+    },
+    {
+      "Start": "1c05f0b77af04476bbcd10c251919a73",
+      "End": "d1d32833d1a24929b647ac217c1d4588",
+      "Id": "57433c0c94d04ec98eeb038cecf9ed4d"
+    },
+    {
+      "Start": "a8e4ebbb52c849d18b525f8bbadd9cae",
+      "End": "b64152ef28c84e67844b11aceb05ab6f",
+      "Id": "55bfada3e16748f9942bff525e09c32b"
+    },
+    {
+      "Start": "c53c6276f1bf491a883903edab29e5ec",
+      "End": "bdfbdce72ba24b89bc5bf9743528a988",
+      "Id": "f2bfa1ae93f9460c84db92624fb292e6"
+    },
+    {
+      "Start": "d9279033fd5145519b531a61d46aef55",
+      "End": "d60c0f6e21b348118fae4d8335b7e976",
+      "Id": "a4f0d5e023534925b3d99a945f71a68a"
+    },
+    {
+      "Start": "296eafb98d2d41398312811f16b0f5f7",
+      "End": "8a2d16b45f19449da1c23d9ee911b88f",
+      "Id": "ab4e0d791d0541868354bf5143b94ecf"
+    },
+    {
+      "Start": "74e3771976c1410494c48cb9744f371a",
+      "End": "8f05e7ac69924c25ad1b788beda7d17d",
+      "Id": "d689c754b9ce4362ac1f90fabdf76ab7"
+    },
+    {
+      "Start": "74e3771976c1410494c48cb9744f371a",
+      "End": "c63f356527f94becb825830d66ee851b",
+      "Id": "8b064d02c0bf4131879c0d5f5ef65eae"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 1383.3880832735165,
+      "EyeY": 207.08160596491913,
+      "EyeZ": -1187.1123063229129,
+      "LookX": 0.0036414857045201643,
+      "LookY": -0.00394494284648772,
+      "LookZ": -0.017600514238210963,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Corridor.Baselines",
+        "Id": "1844dbd16d314bbeb7f9dc0af12c51dc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Baseline.Codes",
+        "Id": "19575384d21d44d99e1414cbe2178123",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 530.024965501108,
+        "Y": 47.085579162183407
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Contains",
+        "Id": "55c1002b0d3e4636a109a8c8241486b3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 800.63022050892994,
+        "Y": 81.548403268749112
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "cfe5d8f6e89c4ba79fe9a23adf1fb7f7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1022.031897343561,
+        "Y": 17.392668696403504
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Baseline.CorridorFeatureLinesByCode",
+        "Id": "80dab3550257448e9b918e6740659c70",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1437.372158483211,
+        "Y": 8.1413723705702949
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "ede3147ffe774d9aa518da6f902c88d9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "eb371b255da446648c5723cdfa0f55e1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 150.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "baf2411d4055442aa3835bc7054c8c20",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1813.372158483211,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 195.26064003095215,
+    "Y": 322.18881726584169,
+    "Zoom": 1.1375820522947402
+  }
+}
