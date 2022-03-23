@@ -691,6 +691,27 @@
       ],
       "Replication": "Auto",
       "Description": "Get the objects of a block.\n\nBlock.Objects: Object[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "Origins",
+      "Id": "146e7f3e4a86497097fb931a28664c9f",
+      "Inputs": [
+        {
+          "Id": "8c4e558d202d4997b42032ff7bf24568",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
     }
   ],
   "Connectors": [
@@ -713,6 +734,11 @@
       "Start": "15597c85cf7347518fbf10e016334563",
       "End": "d9795102c010425b9efec88ef6f1dff3",
       "Id": "f34523d251484688ba16a0aecd157ef6"
+    },
+    {
+      "Start": "15597c85cf7347518fbf10e016334563",
+      "End": "8c4e558d202d4997b42032ff7bf24568",
+      "Id": "a5403c3e6cf44be3b48efcc884f9b0e9"
     },
     {
       "Start": "1e73afc988fe40b08bf5ae0ce936adce",
@@ -819,15 +845,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 1383.3880832735165,
-      "EyeY": 207.08160596491913,
-      "EyeZ": -1187.1123063229129,
-      "LookX": 0.0036414857045201643,
-      "LookY": -0.00394494284648772,
-      "LookZ": -0.017600514238210963,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": 1479.7510032652517,
+      "EyeY": 161.67599015471305,
+      "EyeZ": -1177.604329551802,
+      "LookX": -65.539028167595461,
+      "LookY": 40.227192828685389,
+      "LookZ": -84.460367713822961,
+      "UpX": 0.33389214703480208,
+      "UpY": 0.83867056794542527,
+      "UpZ": 0.43028794151194949
     },
     "NodeViews": [
       {
@@ -838,7 +864,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 248.88164203278666,
-        "Y": 77.7113412008861
+        "Y": 75.106503152909255
       },
       {
         "ShowGeometry": true,
@@ -1007,8 +1033,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2122.80464216214,
-        "Y": 0.0
+        "X": 2140.063087480904,
+        "Y": 23.730362313300333
       },
       {
         "ShowGeometry": true,
@@ -1029,11 +1055,21 @@
         "Excluded": false,
         "X": 2164.4379722772314,
         "Y": 582.93616591708576
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "146e7f3e4a86497097fb931a28664c9f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1000.7527715179264,
+        "Y": -111.72457362965085
       }
     ],
     "Annotations": [],
-    "X": 283.14333325718076,
-    "Y": 65.62066878339175,
-    "Zoom": 0.75724628632923419
+    "X": -349.47008450272688,
+    "Y": 149.16083703301416,
+    "Zoom": 0.90543751215906509
   }
 }
