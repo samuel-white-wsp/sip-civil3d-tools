@@ -203,11 +203,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "a + [blockRotationAngle];",
+      "Code": "a + angle_correction + [blockRotationAngle];",
       "Id": "291e2bd2149941d5a50a69849a4d6167",
       "Inputs": [
         {
-          "Id": "a2b87fa7d4b94c4285aa9facea18f568",
+          "Id": "341c07c7705446e6922fe6c1e06337c4",
           "Name": "a",
           "Description": "a",
           "UsingDefaultValue": false,
@@ -216,7 +216,16 @@
           "KeepListStructure": false
         },
         {
-          "Id": "a73b7cc710044f93ba953babacb6c452",
+          "Id": "100a0a34369248d894297b8f00164472",
+          "Name": "angle_correction",
+          "Description": "angle_correction",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3da9a13eb5f3453393dd62d13fce3077",
           "Name": "blockRotationAngle",
           "Description": "blockRotationAngle",
           "UsingDefaultValue": false,
@@ -227,7 +236,7 @@
       ],
       "Outputs": [
         {
-          "Id": "0128a83e42ca46098bd6557bc767f8a7",
+          "Id": "ee885e96df68480ab405e3649c86349a",
           "Name": "",
           "Description": "Value of expression at line 1",
           "UsingDefaultValue": false,
@@ -819,6 +828,27 @@
       ],
       "Replication": "Auto",
       "Description": "Form the cross product of two vectors\n\nVector.Cross (cross: Vector): Vector"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": -90.0,
+      "Id": "dbf7c562a10d4a979586b75fba327df6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1e806c663e10403ba9445befcd559271",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
     }
   ],
   "Connectors": [
@@ -854,13 +884,13 @@
     },
     {
       "Start": "d297426f90bf4439bbbef0626ef54a6b",
-      "End": "a2b87fa7d4b94c4285aa9facea18f568",
-      "Id": "e9dc7a2e8421449c993d85afc6ea0fb7"
+      "End": "341c07c7705446e6922fe6c1e06337c4",
+      "Id": "822fc462e46d4911b8dfc133ef5687c4"
     },
     {
-      "Start": "0128a83e42ca46098bd6557bc767f8a7",
+      "Start": "ee885e96df68480ab405e3649c86349a",
       "End": "6d4fd1e9ae004dc491e0235d7ff6fca9",
-      "Id": "b73be24f44824f27882c79cae4708da8"
+      "Id": "353fa8f321e74926ad592e1eae311083"
     },
     {
       "Start": "02ab11137051455ab479ea7f913f86bc",
@@ -899,8 +929,8 @@
     },
     {
       "Start": "4c4bb576320c40f49267b42603909faa",
-      "End": "a73b7cc710044f93ba953babacb6c452",
-      "Id": "ffd4b609de2d41fab9ca7aa4d4980ce2"
+      "End": "3da9a13eb5f3453393dd62d13fce3077",
+      "Id": "053a8e6519234a899fc94fa0c676d53b"
     },
     {
       "Start": "3097de4997554612bedc0ab1728420a3",
@@ -966,6 +996,11 @@
       "Start": "c3cb4568e3ca4981a9ac424ca55724e4",
       "End": "f463a39d951a414a88d11596e7d0309d",
       "Id": "c2f2563aac9548b1aa09e7cafa57f95b"
+    },
+    {
+      "Start": "1e806c663e10403ba9445befcd559271",
+      "End": "100a0a34369248d894297b8f00164472",
+      "Id": "92de63d7bccf404e93dea59e55093efb"
     }
   ],
   "Dependencies": [],
@@ -1050,8 +1085,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2110.2668014307856,
-        "Y": 455.91401846174716
+        "X": 2185.843854413009,
+        "Y": 297.95797772890074
       },
       {
         "ShowGeometry": true,
@@ -1060,8 +1095,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2416.6329686143254,
-        "Y": 514.35804924079821
+        "X": 2347.10207987068,
+        "Y": 730.50842076995639
       },
       {
         "ShowGeometry": true,
@@ -1242,11 +1277,53 @@
         "Excluded": false,
         "X": 1868.9217498357648,
         "Y": 19.743566012306275
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Angle Correction",
+        "Id": "dbf7c562a10d4a979586b75fba327df6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2129.2975835640759,
+        "Y": 603.74760829332149
       }
     ],
-    "Annotations": [],
-    "X": -192.47434527484211,
-    "Y": 249.56409961429591,
-    "Zoom": 0.85276592558149755
+    "Annotations": [
+      {
+        "Id": "598a0d0d4b76434db40fcbd405cacd00",
+        "Title": "",
+        "Nodes": [
+          "dbf7c562a10d4a979586b75fba327df6",
+          "54892b6cc23046bfb6ffcb70236ac310"
+        ],
+        "Left": 2083.1350918518292,
+        "Top": 495.39238271842248,
+        "Width": 307.0,
+        "Height": 176.355225574899,
+        "FontSize": 36.0,
+        "InitialTop": 548.39238271842248,
+        "InitialHeight": 200.355225574899,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "54892b6cc23046bfb6ffcb70236ac310",
+        "Title": "Angle corrction for consisency with corridor setout custom node",
+        "Nodes": [],
+        "Left": 2093.1350918518292,
+        "Top": 548.39238271842248,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": -2046.7887016984259,
+    "Y": -76.985293709301573,
+    "Zoom": 1.1246555155866336
   }
 }

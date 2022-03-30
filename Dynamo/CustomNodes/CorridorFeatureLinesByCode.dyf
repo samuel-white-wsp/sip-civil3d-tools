@@ -33,6 +33,10 @@
       "Corridor": {
         "Key": "Autodesk.Civil.DynamoNodes.Corridor",
         "Value": "Civil3DNodes.dll"
+      },
+      "Baseline": {
+        "Key": "Autodesk.Civil.DynamoNodes.Baseline",
+        "Value": "Civil3DNodes.dll"
       }
     }
   },
@@ -205,45 +209,6 @@
       "Description": "Filters a sequence by looking up corresponding indices in a separate list of booleans.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
     },
     {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Baseline.CorridorFeatureLinesByCode@string",
-      "Id": "80dab3550257448e9b918e6740659c70",
-      "Inputs": [
-        {
-          "Id": "bdfbdce72ba24b89bc5bf9743528a988",
-          "Name": "baseline",
-          "Description": "Autodesk.Civil.DynamoNodes.Baseline",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "c63f356527f94becb825830d66ee851b",
-          "Name": "code",
-          "Description": "string",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "d9279033fd5145519b531a61d46aef55",
-          "Name": "CorridorFeatureLine[]",
-          "Description": "CorridorFeatureLine[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Get the corridor feature lines of the baseline by a specified code name.\n\nBaseline.CorridorFeatureLinesByCode (code: string): CorridorFeatureLine[]"
-    },
-    {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
@@ -375,6 +340,45 @@
       "Outputs": [],
       "Replication": "Disabled",
       "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "corridorfeatureline1 = Baseline.CorridorFeatureLinesByCode(t1, t2);",
+      "Id": "a5d5f555e06d4dd1a0e7554b14994b09",
+      "Inputs": [
+        {
+          "Id": "708ddea69adc48c4beb6e8331c4daf8d",
+          "Name": "t1",
+          "Description": "t1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "93e60c6e0f59476a8c60b6b8a46e5608",
+          "Name": "t2",
+          "Description": "t2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7e0e06dba33049c0b2ee0581220305dc",
+          "Name": "",
+          "Description": "corridorfeatureline1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
     }
   ],
   "Connectors": [
@@ -400,18 +404,13 @@
     },
     {
       "Start": "c53c6276f1bf491a883903edab29e5ec",
-      "End": "bdfbdce72ba24b89bc5bf9743528a988",
-      "Id": "f2bfa1ae93f9460c84db92624fb292e6"
-    },
-    {
-      "Start": "c53c6276f1bf491a883903edab29e5ec",
       "End": "da077f9a4316427bb92951394d5e69ea",
       "Id": "5d84644f0b06485bb4991bf1d37bb4d8"
     },
     {
-      "Start": "d9279033fd5145519b531a61d46aef55",
-      "End": "d60c0f6e21b348118fae4d8335b7e976",
-      "Id": "a4f0d5e023534925b3d99a945f71a68a"
+      "Start": "c53c6276f1bf491a883903edab29e5ec",
+      "End": "708ddea69adc48c4beb6e8331c4daf8d",
+      "Id": "d50266dec6dc45258e7b5c43271dbfab"
     },
     {
       "Start": "296eafb98d2d41398312811f16b0f5f7",
@@ -425,18 +424,23 @@
     },
     {
       "Start": "74e3771976c1410494c48cb9744f371a",
-      "End": "c63f356527f94becb825830d66ee851b",
-      "Id": "8b064d02c0bf4131879c0d5f5ef65eae"
+      "End": "2dc06a61d12341cdaaaddbf630224325",
+      "Id": "b7e00fbf59b643778312d8d8ff09d9bb"
     },
     {
       "Start": "74e3771976c1410494c48cb9744f371a",
-      "End": "2dc06a61d12341cdaaaddbf630224325",
-      "Id": "b7e00fbf59b643778312d8d8ff09d9bb"
+      "End": "93e60c6e0f59476a8c60b6b8a46e5608",
+      "Id": "2962d03e00fb4db8962d899ea2afa075"
     },
     {
       "Start": "525f3c7933554311900d6de755a789e6",
       "End": "3b968f253e454cdd8b1bda04bfc74f67",
       "Id": "00fb24f08b044785a1bf9bb3d4cbf14e"
+    },
+    {
+      "Start": "7e0e06dba33049c0b2ee0581220305dc",
+      "End": "d60c0f6e21b348118fae4d8335b7e976",
+      "Id": "2afc14e25fdc4d71bcffec235b014e54"
     }
   ],
   "Dependencies": [],
@@ -462,15 +466,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 1779111.5028187635,
-      "EyeY": -98.275783164087386,
-      "EyeZ": -5875859.9561808472,
-      "LookX": -813.719570107758,
-      "LookY": 499.4528446697247,
-      "LookZ": -1048.6431677248329,
-      "UpX": 0.33389214703480208,
-      "UpY": 0.83867056794542527,
-      "UpZ": 0.43028794151194949
+      "EyeX": 1609.5907245283809,
+      "EyeY": 160.37609089481893,
+      "EyeZ": -1372.8328482577986,
+      "LookX": -11.207726816203831,
+      "LookY": 59.326436475935,
+      "LookZ": -21.704790119109703,
+      "UpX": 0.45184237081795325,
+      "UpY": 0.17364817766693164,
+      "UpZ": 0.87503416066263917
     },
     "NodeViews": [
       {
@@ -512,16 +516,6 @@
         "Excluded": false,
         "X": 1022.031897343561,
         "Y": 17.392668696403504
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Baseline.CorridorFeatureLinesByCode",
-        "Id": "80dab3550257448e9b918e6740659c70",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1428.0966615661368,
-        "Y": 20.508701593335829
       },
       {
         "ShowGeometry": true,
@@ -572,11 +566,21 @@
         "Excluded": false,
         "X": 1812.214316320584,
         "Y": 169.95386682603294
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "a5d5f555e06d4dd1a0e7554b14994b09",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1145.0101733139797,
+        "Y": -176.72368776267743
       }
     ],
     "Annotations": [],
-    "X": -83.817296075288368,
-    "Y": 192.75629900758577,
-    "Zoom": 0.64686561309241419
+    "X": -1201.4944741623935,
+    "Y": 479.14706426690668,
+    "Zoom": 1.2928910957911361
   }
 }
