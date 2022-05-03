@@ -1,0 +1,562 @@
+{
+  "Uuid": "c2d6eea6-9537-443e-971c-1d5c72ab24bf",
+  "IsCustomNode": true,
+  "Category": "SIP_Tools",
+  "Description": "Returns the length of a block in the X direction",
+  "Name": "BlockXLength",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Document.Current": {
+        "Key": "Autodesk.AutoCAD.DynamoNodes.Document",
+        "Value": "AutoCADNodes.dll"
+      },
+      "Document": {
+        "Key": "Autodesk.AutoCAD.DynamoNodes.Document",
+        "Value": "AutoCADNodes.dll"
+      },
+      "CorridorFeatureLine": {
+        "Key": "Autodesk.Civil.DynamoNodes.CorridorFeatureLine",
+        "Value": "Civil3DNodes.dll"
+      },
+      "CoordinateSystem": {
+        "Key": "Autodesk.DesignScript.Geometry.CoordinateSystem",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Vector": {
+        "Key": "Autodesk.DesignScript.Geometry.Vector",
+        "Value": "ProtoGeometry.dll"
+      },
+      "BlockReference": {
+        "Key": "Autodesk.AutoCAD.DynamoNodes.BlockReference",
+        "Value": "AutoCADNodes.dll"
+      },
+      "Corridor": {
+        "Key": "Autodesk.Civil.DynamoNodes.Corridor",
+        "Value": "Civil3DNodes.dll"
+      },
+      "List": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
+      },
+      "Autodesk.Civil.DynamoNodes.Alignment": {
+        "Key": "Autodesk.Civil.DynamoNodes.Alignment",
+        "Value": "Civil3DNodes.dll"
+      },
+      "TkCorridorFeatureLine": {
+        "Key": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+        "Value": "Autodesk.Civil3DToolkit.dll"
+      },
+      "DSCore.Math": {
+        "Key": "DSCore.Math",
+        "Value": "DSCoreNodes.dll"
+      },
+      "DSCore.List": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      },
+      "Autodesk.Curve": {
+        "Key": "Autodesk.DesignScript.Geometry.Curve",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Autodesk.DesignScript.Geometry.Curve": {
+        "Key": "Autodesk.DesignScript.Geometry.Curve",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Autodesk.Civil.DynamoNodes.Corridor": {
+        "Key": "Autodesk.Civil.DynamoNodes.Corridor",
+        "Value": "Civil3DNodes.dll"
+      },
+      "String": {
+        "Key": "DSCore.String",
+        "Value": "DSCoreNodes.dll"
+      },
+      "FeatureLine": {
+        "Key": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine",
+        "Value": "Autodesk.Civil3DToolkit.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Block.Objects",
+      "Id": "4f67df10091740bcb7ec352778605ad5",
+      "Inputs": [
+        {
+          "Id": "d068a17f2eb24707b5997ca596c7a40e",
+          "Name": "block",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dd5f546312c94781b8516b409c22d879",
+          "Name": "Object[]",
+          "Description": "Object[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the objects of a block.\n\nBlock.Objects: Object[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Object.Geometry",
+      "Id": "7a040c811f9b45d5ba3e8539e9637699",
+      "Inputs": [
+        {
+          "Id": "39df19a7d4994dcea49dcbaf947671d6",
+          "Name": "object",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "711a4d529c454241ae01316808a6d5e7",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get Dynamo representation of this object.\n\nObject.Geometry: Geometry"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.BoundingBox.ByGeometry@Autodesk.DesignScript.Geometry.Geometry[]",
+      "Id": "b72a9b9a1e24417ea9621a0764028774",
+      "Inputs": [
+        {
+          "Id": "e328cad5af4b407fad6245d9add864ab",
+          "Name": "geom",
+          "Description": "Geometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "359e728e430440f7a4bd76b60fa2105c",
+          "Name": "BoundingBox",
+          "Description": "BoundingBox",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create an axis-aligned BoundingBox around input Geometry.\n\nBoundingBox.ByGeometry (geom: Geometry[]): BoundingBox"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.BoundingBox.MaxPoint",
+      "Id": "f726d8e4d6164505a24cdb131e4c6a0c",
+      "Inputs": [
+        {
+          "Id": "0b5a56dec5c74de0a1ea004cf27ef452",
+          "Name": "boundingBox",
+          "Description": "Autodesk.DesignScript.Geometry.BoundingBox",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ac0ad684f74a43b89a1b641f3f012baf",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The maximum point\n\nBoundingBox.MaxPoint: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.BoundingBox.MinPoint",
+      "Id": "a8f13962d9514b60bdfd80d6cb71bc36",
+      "Inputs": [
+        {
+          "Id": "07666339eb694861b6d3ad3b30a9f818",
+          "Name": "boundingBox",
+          "Description": "Autodesk.DesignScript.Geometry.BoundingBox",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "17e42a6140664b878a60b9a02366e832",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The minimum point\n\nBoundingBox.MinPoint: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.X",
+      "Id": "95501bd8489a44b29afdf397a20836c7",
+      "Inputs": [
+        {
+          "Id": "eb97fce9524c498aac10380288f7dd90",
+          "Name": "point",
+          "Description": "Autodesk.DesignScript.Geometry.Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "de31e41f63e94b588ee308cac1de2b82",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the X component of a Point\n\nPoint.X: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.X",
+      "Id": "393b7ab662c047cc97ed4b94e722c8a1",
+      "Inputs": [
+        {
+          "Id": "00b19c240b264d9888ee8cda88594957",
+          "Name": "point",
+          "Description": "Autodesk.DesignScript.Geometry.Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fc3c0b7edc444c8789c71785fdb02e84",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the X component of a Point\n\nPoint.X: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "-@var[]..[],var[]..[]",
+      "Id": "07ab634f9b404e968bba6363d6d0974c",
+      "Inputs": [
+        {
+          "Id": "d46bcd9b8653477a9e08680f515c2f06",
+          "Name": "x",
+          "Description": "x value.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "750e980e6731410e8c3e96b675297e3a",
+          "Name": "y",
+          "Description": "y value.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3ebbfdb1bc5846b6a09415f5b399f25b",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "x subtract y.\n\n- (x: var[]..[], y: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "block",
+        "TypeName": "Autodesk.AutoCAD.DynamoNodes.Block",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "3608ad79ee1c4e2d961db4bbce46476e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2a9196264ef6478ba6ba379c6a56107b",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "var[]..[]",
+      "Id": "70f7c4f4218644ba84e21557b0b7b50f",
+      "Inputs": [
+        {
+          "Id": "255de124fd914a5994767029785432fd",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "dd5f546312c94781b8516b409c22d879",
+      "End": "39df19a7d4994dcea49dcbaf947671d6",
+      "Id": "53247f7cc4b74ad08ad57464d1586a3d"
+    },
+    {
+      "Start": "711a4d529c454241ae01316808a6d5e7",
+      "End": "e328cad5af4b407fad6245d9add864ab",
+      "Id": "7e974ac2747b44e0aced528fc0461c33"
+    },
+    {
+      "Start": "359e728e430440f7a4bd76b60fa2105c",
+      "End": "0b5a56dec5c74de0a1ea004cf27ef452",
+      "Id": "8cd229e95dfe4ef9bc16d9443f5a450a"
+    },
+    {
+      "Start": "359e728e430440f7a4bd76b60fa2105c",
+      "End": "07666339eb694861b6d3ad3b30a9f818",
+      "Id": "d26f47a1bfe8433f991633cd75af5f7c"
+    },
+    {
+      "Start": "ac0ad684f74a43b89a1b641f3f012baf",
+      "End": "eb97fce9524c498aac10380288f7dd90",
+      "Id": "8b49c48b774b46fe9a46c411783a9d23"
+    },
+    {
+      "Start": "17e42a6140664b878a60b9a02366e832",
+      "End": "00b19c240b264d9888ee8cda88594957",
+      "Id": "c4f7a981fcc742a99e3f3fcf99db6cf2"
+    },
+    {
+      "Start": "de31e41f63e94b588ee308cac1de2b82",
+      "End": "d46bcd9b8653477a9e08680f515c2f06",
+      "Id": "545ac31a966b4c82b22a3e67f2e02f64"
+    },
+    {
+      "Start": "fc3c0b7edc444c8789c71785fdb02e84",
+      "End": "750e980e6731410e8c3e96b675297e3a",
+      "Id": "2d47385dcb16494395eec6db7990c56f"
+    },
+    {
+      "Start": "3ebbfdb1bc5846b6a09415f5b399f25b",
+      "End": "255de124fd914a5994767029785432fd",
+      "Id": "e07802e221d945479b8b4364e4e1f16f"
+    },
+    {
+      "Start": "2a9196264ef6478ba6ba379c6a56107b",
+      "End": "d068a17f2eb24707b5997ca596c7a40e",
+      "Id": "cbcb7537a07f4b35b0e592b3ea72f6f4"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Block.Objects",
+        "Id": "4f67df10091740bcb7ec352778605ad5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Object.Geometry",
+        "Id": "7a040c811f9b45d5ba3e8539e9637699",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 497.507519738032,
+        "Y": 20.540043131786888
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "BoundingBox.ByGeometry",
+        "Id": "b72a9b9a1e24417ea9621a0764028774",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 737.82602437993773,
+        "Y": 28.756060384501552
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "BoundingBox.MaxPoint",
+        "Id": "f726d8e4d6164505a24cdb131e4c6a0c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1016.9482807941827,
+        "Y": 97.874640130968146
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "BoundingBox.MinPoint",
+        "Id": "a8f13962d9514b60bdfd80d6cb71bc36",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1014.8942764810045,
+        "Y": 180.03481265811547
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Point.X",
+        "Id": "95501bd8489a44b29afdf397a20836c7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1297.7182728537741,
+        "Y": 111.59400133137706
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Point.X",
+        "Id": "393b7ab662c047cc97ed4b94e722c8a1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1284.6401164916788,
+        "Y": 215.56588798015537
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "-",
+        "Id": "07ab634f9b404e968bba6363d6d0974c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1542.0979942547046,
+        "Y": 242.93464455126082
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "3608ad79ee1c4e2d961db4bbce46476e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "70f7c4f4218644ba84e21557b0b7b50f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1786.0979942547046,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}
